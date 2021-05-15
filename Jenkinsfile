@@ -6,8 +6,7 @@ pipeline {
 	stages {
     	stage("Checkout") {   
         	steps {               	 
-            	git branch: 'main', url: 'https://github.com/jdvalera/java-spring-demo.git'          	 
-           	 
+            	git branch: 'main',  url: 'https://github.com/jdvalera/java-spring-demo'          	 
         	}    
     	}
     	stage('Build') {
@@ -15,15 +14,15 @@ pipeline {
         	sh "mvn compile"  	 
         	}
     	}
-   	 
     	stage("Unit test") {          	 
         	steps {  	 
             	sh "mvn test"          	 
-       	}
-	    stage("Package") {
-		      steps {
-		          sh "mvn package"
-	      }
+       	    }
+        }
+    	stage("Package") {          	 
+        	steps {  	 
+            	sh "mvn package"          	 
+       	    }
+        }
     }
-  }
 }
